@@ -1,0 +1,68 @@
+sbin\start-dfs
+sbin\start-yarn
+hadoop fs -mkdir -p dir1/
+hadoop fs -ls /
+hadoop fs -ls /dir1/
+hadoop fs -copyFromLocal "C:\\tmp\\integer.txt" /dir1/filename2.txt
+hadoop fs -put "C:\\tmp\\integer.txt" dir1/filename2.txt
+hadoop fs -put file:///C://tmp//integer.txt folder1/file1_integer.txt
+hadoop fs -cat dir1/filename1.txt
+hadoop fs -rm dir1/filename1.txt
+hadoop fs -rm dir1/*.*
+hadoop fs -rmdir dir1/
+
+
+hadoop fs -put file:///C://tmp//integer.txt folder1/file1_integer.txt
+
+http://<HOST>:<HTTP_PORT>/webhdfs/v1/<PATH>?op=...
+Authentication when security is off:
+curl -i "http://<HOST>:<PORT>/webhdfs/v1/<PATH>?[user.name=<USER>&]op=..."
+
+Authentication using Kerberos SPNEGO when security is on:
+    curl -i --negotiate -u : "http://<HOST>:<PORT>/webhdfs/v1/<PATH>?op=..."
+        
+
+Authentication using Hadoop delegation token when security is on:
+    curl -i "http://<HOST>:<PORT>/webhdfs/v1/<PATH>?delegation=<TOKEN>&op=..."
+
+curl -i -X PUT "http://localhost:50070/webhdfs/v1/temp/webhdfs?user.name=Administrator&op=MKDIRS"
+curl -i -X DELETE "http://localhost:50070/webhdfs/v1/temp/webhdfs?op=DELETE&user.name=Administrator&destination=/temp/webhdfs"
+curl -i -X DELETE "http://localhost:50070/webhdfs/v1/folder3/hdfsinteger.txt?op=DELETE&user.name=Administrator"
+
+curl -i -X PUT "http://localhost:50070/webhdfs/v1/temp?op=RENAME&user.name=Administrator&destination=/tempnew"
+
+curl -i -X PUT "http://localhost:50070/webhdfs/v1/tempnew/integer.txt?user.name=Administrator&op=CREATE"
+curl -i -T integer.txt "http://localhost:50075/webhdfs/v1/temp/integer.txt?op=CREATE&user.name=Administrator&overwrite=false"
+        
+resume download
+curl -O http://www.gnu.org/software/gettext/manual/gettext.html
+curl -C - -O http://www.gnu.org/software/gettext/manual/gettext.html
+        
+
+http://localhost:50070/webhdfs/v1/log_error/err2.txt?user.name=DeepakK&op=LISTSTATUS
+http://localhost:50070/webhdfs/v1/log_error/err2.txt?user.name=DeepakK&op=OPEN
+curl -i -X PUT "http://localhost:50070/webhdfs/v1/errd/errfile.txt?user.name=DeepakK&op=CREATE&noredirect=true"
+curl -i -X PUT -T integer.txt "http://localhost:50075/webhdfs/v1/errd/errfile.txt?user.name=DeepakK&namenoderpcaddress=localhost:19000&overwrite=false&op=CREATE"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
